@@ -4,6 +4,7 @@ import NavigationBar from "./components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./components/LoginPage";
 import TransactionHistory from "./components/TransactionHistory";
+import Balance from "./components/balance";
 
 export default function App() {
   return (
@@ -19,7 +20,7 @@ export default function App() {
             exact
             component={() => <TransactionHistory />}
           />
-          <Route path="/balance" exact component={() => <div>Balance</div>} />
+          <Route path="/balance" exact component={() => <Balance />} />
           <Route path="/chat" exact component={() => <div>Chat</div>} />
         </Switch>
       </Router>
