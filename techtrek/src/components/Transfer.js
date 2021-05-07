@@ -82,9 +82,6 @@ export default function Transfer() {
                 <button type="submit" className="btn btn-primary" onClick={submitTransaction()}>Submit</button>
 
             </div>
-            <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
         </form>
   )
 };
