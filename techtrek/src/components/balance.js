@@ -39,10 +39,10 @@ function Balance() {
   }, []);
 
   return (
-    <div>
+    <div style={{ color: "white" }}>
       <NavigationBar />
       <h1>View Balance</h1>
-      <Table striped bordered hover>
+      <Table striped bordered hover style={{ color: "white" }}>
         <thead>
           <tr>
             <th>Account Type</th>
@@ -52,7 +52,7 @@ function Balance() {
         </thead>
         <tbody>
           {Balance.map((Balance) => (
-            <tr>
+            <tr style={{ color: "white" }}>
               <td>{Balance.accountName}</td>
               <td>{Balance.accountNumber}</td>
               <td>{Balance.availableBal}</td>
