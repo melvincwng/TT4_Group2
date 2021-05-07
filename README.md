@@ -1,7 +1,7 @@
 # TT4_Group2 (DBS Techtrek Hackathon 2021 - Group 2)
 
 This mock banking application allows a pre-defined user to login, view his/her account balance, make transfers and view transaction history. There is also a chatbot integrated in this application as well.
-Please take note, this is NOT A REAL banking application! This MVP was purely for our participation in the DBS Techtrek Hackathon 2021.
+Please take note, this is <b>NOT A REAL</b> banking application! This MVP was purely for our participation in the DBS Techtrek Hackathon 2021.
 
 ## Languages/Tools used:
 HTML, CSS, Javascript, React
