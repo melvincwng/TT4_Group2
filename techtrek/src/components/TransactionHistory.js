@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import NavigationBar from "./NavigationBar";
 /*
  * User must be able to view his/her own transaction history.
  * Data visualization through simple graphs.
@@ -62,37 +61,41 @@ function TransactionHistory() {
     convertTransactionHistoryDateTime();
   }, []);
 
-    return (
-        <>
-            <h1>Transaction History</h1>
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                        <th>Customer Id</th>
-                        <th>Date Time</th>
-                        <th>Amount</th>
-                        <th>e-Gift</th>
-                        <th>Expenses</th>
-                        <th>Message</th>
-                        <th>Payee Id</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableInfo.map((transactionHistory, index) => (
-                    <tr key={index}>
-                    <td>{transactionHistory.custID}</td>
-                    <td>{transactionHistory.datetime}</td>
-                    <td>{(transactionHistory.payeeID === credentials.custID) ? `+${transactionHistory.amount}` : `-${transactionHistory.amount}`}</td>
-                    <td>{JSON.stringify(transactionHistory.eGift)}</td>
-                    <td>{transactionHistory.expenseCat}</td>
-                    <td>{transactionHistory.message}</td>
-                    <td>{transactionHistory.payeeID}</td>
-                    </tr>
-                    ))}
-                </tbody>
-            </Table>
-        </>
-    )
+  return (
+    <>
+      <h1>Transaction History</h1>
+      <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>Customer Id</th>
+            <th>Date Time</th>
+            <th>Amount</th>
+            <th>e-Gift</th>
+            <th>Expenses</th>
+            <th>Message</th>
+            <th>Payee Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableInfo.map((transactionHistory, index) => (
+            <tr key={index}>
+              <td>{transactionHistory.custID}</td>
+              <td>{transactionHistory.datetime}</td>
+              <td>
+                {transactionHistory.payeeID === credentials.custID
+                  ? `+${transactionHistory.amount}`
+                  : `-${transactionHistory.amount}`}
+              </td>
+              <td>{JSON.stringify(transactionHistory.eGift)}</td>
+              <td>{transactionHistory.expenseCat}</td>
+              <td>{transactionHistory.message}</td>
+              <td>{transactionHistory.payeeID}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
+  );
 }
 
 export default TransactionHistory;
