@@ -62,42 +62,37 @@ function TransactionHistory() {
     convertTransactionHistoryDateTime();
   }, []);
 
-  return (
-    <>
-      <NavigationBar />
-      <h1>Transaction History</h1>
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Customer Id</th>
-            <th>Date Time</th>
-            <th>Amount</th>
-            <th>e-Gift</th>
-            <th>Expenses</th>
-            <th>message</th>
-            <th>Payee Id</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableInfo.map((transactionHistory, index) => (
-            <tr key={index}>
-              <td>{transactionHistory.custID}</td>
-              <td>{transactionHistory.datetime}</td>
-              <td>
-                {transactionHistory.payeeID === credentials.custID
-                  ? `+${transactionHistory.amount}`
-                  : `-${transactionHistory.amount}`}
-              </td>
-              <td>{JSON.stringify(transactionHistory.eGift)}</td>
-              <td>{transactionHistory.expenseCat}</td>
-              <td>{transactionHistory.message}</td>
-              <td>{transactionHistory.payeeID}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </>
-  );
+    return (
+        <>
+            <h1>Transaction History</h1>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>Customer Id</th>
+                        <th>Date Time</th>
+                        <th>Amount</th>
+                        <th>e-Gift</th>
+                        <th>Expenses</th>
+                        <th>Message</th>
+                        <th>Payee Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tableInfo.map((transactionHistory, index) => (
+                    <tr key={index}>
+                    <td>{transactionHistory.custID}</td>
+                    <td>{transactionHistory.datetime}</td>
+                    <td>{(transactionHistory.payeeID === credentials.custID) ? `+${transactionHistory.amount}` : `-${transactionHistory.amount}`}</td>
+                    <td>{JSON.stringify(transactionHistory.eGift)}</td>
+                    <td>{transactionHistory.expenseCat}</td>
+                    <td>{transactionHistory.message}</td>
+                    <td>{transactionHistory.payeeID}</td>
+                    </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </>
+    )
 }
 
 export default TransactionHistory;
