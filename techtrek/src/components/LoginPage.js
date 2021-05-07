@@ -56,6 +56,13 @@ function LoginPage() {
 
   return (
     <div>
+      <div className={styles.warningMessage}>
+        <h1>ALERT: </h1>
+        There are scam calls targeting customers to make bank transfers. DO NOT
+        disclose any account details, User ID, PINs or SMS OTP to anyone. Due to
+        COVID-19, we have limited our Secured Mailbox services. For queries,
+        visit Help and Support or chat with us.
+      </div>
       <form
         encType="multipart/form-data"
         onSubmit={handleSubmit}
