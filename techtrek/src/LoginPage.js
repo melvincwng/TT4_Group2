@@ -15,6 +15,21 @@ function LoginPage() {
 
   function login() {
     console.warn(email, password);
+    let item = { email, password };
+    let response = fetch(
+      "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(item),
+      }
+    );
+    response = response.json();
+    localStorage.setItem("x-api-key", JSON.stringify(response));
+    history.push("/add");
   }
 
   return (
