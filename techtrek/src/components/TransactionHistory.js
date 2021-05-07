@@ -33,34 +33,36 @@ function TransactionHistory() {
   // States
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [tableInfo, setTableInfo] = useState([]);
-  const fetchTransactionHistory = async () => {
-    const response = axios
-      .post(transactionAPI, credentials, config)
-      .then((response) => {
-        setTransactionHistory(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  
 
-    return response;
-  };
-
-  const convertTransactionHistoryDateTime = () => {
-    let data = [];
-    for (var i in transactionHistory) {
-      let val = transactionHistory[i];
-      let unix_timestamp = val.datetime;
-      var date = new Date(unix_timestamp * 1000);
-      data.push({ ...val, datetime: date });
-    }
-    setTableInfo(data);
-  };
+  
 
   useEffect(() => {
+    const fetchTransactionHistory = async () => {
+        const response = axios
+          .post(transactionAPI, credentials, config)
+          .then((response) => {
+            setTransactionHistory(response.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    
+        return response;
+      };
+    const convertTransactionHistoryDateTime = () => {
+        let data = [];
+        for (var i in transactionHistory) {
+            let val = transactionHistory[i];
+            let unix_timestamp = val.datetime;
+            var date = new Date(unix_timestamp * 1000);
+            data.push({ ...val, datetime: date });
+        }
+    setTableInfo(data);
+    };
     fetchTransactionHistory();
     convertTransactionHistoryDateTime();
-  }, []);
+    }, []);
 
     return (
         <>
