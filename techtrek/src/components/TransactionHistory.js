@@ -68,7 +68,7 @@ function TransactionHistory() {
     return (
         <>
             <h1>Transaction History</h1>
-            <Table striped bordered hover>
+            <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th>Customer Id</th>
