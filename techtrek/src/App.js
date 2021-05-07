@@ -9,7 +9,6 @@ export default function App() {
   return (
     <div>
       <Router>
-        <NavigationBar />
         <Switch>
           <Route path="/" exact component={() => <div>Homepage</div>} />
           <Route path="/login" exact component={() => <LoginPage />} />
