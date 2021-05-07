@@ -8,14 +8,12 @@ export default function App() {
   return (
     <div>
       <Router>
-        <NavigationBar />
         <Switch>
           <Route path="/" exact component={() => <div>Homepage</div>} />
           <Route path="/login" exact component={() => <div>Login Page</div>} />
           <Route path="/transfer" exact component={(Transfer)} />
           <Route path="/history" exact component={() => <div>History</div>} />
           <Route path="/balance" exact component={() => <div>Balance</div>} />
-          <Route path="/chat" exact component={() => <div>Chat</div>} />
         </Switch>
       </Router>
     </div>
