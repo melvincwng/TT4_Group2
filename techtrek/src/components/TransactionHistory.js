@@ -1,6 +1,6 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import React from 'react'
+import axios from "axios"
+import { useState, useEffect } from "react"
 import { Table } from "react-bootstrap";
 /*
  * User must be able to view his/her own transaction history.
@@ -31,14 +31,13 @@ function TransactionHistory() {
 
     // States
     const [transactionHistory, setTransactionHistory] = useState([]);
-
+    const [tableInfo, setTableInfo] = useState([]);
     const fetchTransactionHistory = async () => {
         const response = axios.post(
             transactionAPI,
             credentials,
             config
             ).then((response) => {
-                console.log(response);
                 setTransactionHistory(response.data);
                 }
             ).catch((err) => {
@@ -49,8 +48,21 @@ function TransactionHistory() {
         return response;
     }
 
+    const convertTransactionHistoryDateTime = () => {
+        let data = [];
+        for(var i in transactionHistory)
+        {
+            let val = transactionHistory[i]
+            let unix_timestamp = val.datetime;
+            var date = new Date(unix_timestamp * 1000);
+            data.push({...val, datetime: date});
+        }
+        setTableInfo(data)
+    }
+
     useEffect(() => {
         fetchTransactionHistory();
+        convertTransactionHistoryDateTime();
     },[]);
     
     return (
@@ -69,16 +81,11 @@ function TransactionHistory() {
                     </tr>
                 </thead>
                 <tbody>
-                    {transactionHistory.map((transactionHistory, index) => (
+                    {tableInfo.map((transactionHistory, index) => (
                     <tr key={index}>
                     <td>{transactionHistory.custID}</td>
-                    <td>{()=>{
-                        var date = new Date(transactionHistory.timestamp*1000);
-                        var year = date.getFullYear();
-                        console.log(year)
-                        return year;
-                    }}</td>
-                    <td>{(transactionHistory.payeeID == credentials.custID) ? `+${transactionHistory.amount}` : `-${transactionHistory.amount}`}</td>
+                    <td>{transactionHistory.datetime}</td>
+                    <td>{(transactionHistory.payeeID === credentials.custID) ? `+${transactionHistory.amount}` : `-${transactionHistory.amount}`}</td>
                     <td>{JSON.stringify(transactionHistory.eGift)}</td>
                     <td>{transactionHistory.expenseCat}</td>
                     <td>{transactionHistory.message}</td>
