@@ -32,7 +32,7 @@ function TransactionHistory() {
     // States
     const [transactionHistory, setTransactionHistory] = useState([]);
 
-    const fetchTransactionHistory = () => {
+    const fetchTransactionHistory = async () => {
         const response = axios.post(
             transactionAPI,
             credentials,
@@ -40,7 +40,6 @@ function TransactionHistory() {
             ).then((response) => {
                 console.log(response);
                 setTransactionHistory(response.data);
-                filterTransactionHistory(credentials.custID);
                 }
             ).catch((err) => {
                 console.log(err);
@@ -50,10 +49,6 @@ function TransactionHistory() {
         return response;
     }
 
-    const filterTransactionHistory = (customerId) => {
-        setTransactionHistory(transactionHistory.filter((transactionDetail) => transactionDetail.custID === customerId ))
-    }
-    
     useEffect(() => {
         fetchTransactionHistory();
     },[]);
@@ -74,11 +69,11 @@ function TransactionHistory() {
                     </tr>
                 </thead>
                 <tbody>
-                    {transactionHistory.map((transactionHistory) => (
-                    <tr key={transactionHistory.datetime}>
+                    {transactionHistory.map((transactionHistory, index) => (
+                    <tr key={index}>
                     <td>{transactionHistory.custID}</td>
                     <td>{transactionHistory.datetime}</td>
-                    <td>{transactionHistory.amount}</td>
+                    <td>{(transactionHistory.payeeID == credentials.custID) ? `+${transactionHistory.amount}` : `-${transactionHistory.amount}`}</td>
                     <td>{JSON.stringify(transactionHistory.eGift)}</td>
                     <td>{transactionHistory.expenseCat}</td>
                     <td>{transactionHistory.message}</td>
