@@ -13,7 +13,6 @@ function NavigationBar() {
           <Nav.Link href="/transfer">Transfer</Nav.Link>
           <Nav.Link href="/history">Tx History</Nav.Link>
           <Nav.Link href="/balance">Balance</Nav.Link>
-          <Nav.Link href="/chat">Chat</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
