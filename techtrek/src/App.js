@@ -20,7 +20,6 @@ export default function App() {
             component={() => <TransactionHistory />}
           />
           <Route path="/balance" exact component={() => <div>Balance</div>} />
-          <Route path="/chat" exact component={() => <div>Chat</div>} />
         </Switch>
       </Router>
     </div>

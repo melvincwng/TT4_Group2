@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -55,7 +56,18 @@ function LoginPage() {
 
   return (
     <div>
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+      <div className={styles.warningMessage}>
+        <h1>ALERT: </h1>
+        There are scam calls targeting customers to make bank transfers. DO NOT
+        disclose any account details, User ID, PINs or SMS OTP to anyone. Due to
+        COVID-19, we have limited our Secured Mailbox services. For queries,
+        visit Help and Support or chat with us.
+      </div>
+      <form
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+        className={styles.loginForm}
+      >
         <Header />
         <h1> Login Details</h1>
         <div>
@@ -74,12 +86,7 @@ function LoginPage() {
             className="form-control"
           ></input>
           <br />
-          <input
-            type="checkbox"
-            placeholder="Remember me"
-            className="form-control"
-          ></input>
-          <br />
+
           <button
             onClick={login}
             className="btn btn-primary"
