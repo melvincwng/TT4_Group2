@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.Form-centered {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+}
+
