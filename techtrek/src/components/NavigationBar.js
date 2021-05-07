@@ -8,10 +8,18 @@ function NavigationBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/transfer">Transfer</Nav.Link>
-          <Nav.Link href="/history">Tx History</Nav.Link>
-          <Nav.Link href="/balance">Balance</Nav.Link>
+          <Nav.Link href="/" style={{ color: "white" }}>
+            Home
+          </Nav.Link>
+          <Nav.Link href="/transfer" style={{ color: "white" }}>
+            Transfer
+          </Nav.Link>
+          <Nav.Link href="/history" style={{ color: "white" }}>
+            Tx History
+          </Nav.Link>
+          <Nav.Link href="/balance" style={{ color: "white" }}>
+            Balance
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
