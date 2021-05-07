@@ -40,7 +40,7 @@ function LoginPage() {
           .post(url, formData, config)
           .then((response) => storeUserSession(response.data));
         alert("You logged in!");
-        window.location.href = "/";
+        window.location.href = "/balance";
       } catch (err) {
         console.log(err);
       }

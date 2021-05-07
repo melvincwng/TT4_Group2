@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavigationBar from "./NavigationBar";
 
 function Balance() {
   const url =
@@ -39,6 +40,7 @@ function Balance() {
 
   return (
     <div>
+      <NavigationBar />
       <h1>View Balance</h1>
       <Table striped bordered hover>
         <thead>

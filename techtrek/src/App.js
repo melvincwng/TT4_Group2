@@ -11,8 +11,7 @@ export default function App() {
     <div>
       <Router>
         <Switch>
-          <Route path="/" exact component={() => <div>Homepage</div>} />
-          <Route path="/login" exact component={() => <LoginPage />} />
+          <Route path="/" exact component={() => <LoginPage />} />
           <Route path="/transfer" exact component={() => <div>Transfer</div>} />
           <Route
             path="/history"

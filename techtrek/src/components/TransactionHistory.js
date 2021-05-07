@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import NavigationBar from "./NavigationBar";
 /*
  * User must be able to view his/her own transaction history.
  * Data visualization through simple graphs.
@@ -31,40 +32,28 @@ function TransactionHistory() {
 
   // States
   const [transactionHistory, setTransactionHistory] = useState([]);
-  const [tableInfo, setTableInfo] = useState([]);
-  
 
-  
+  const fetchTransactionHistory = async () => {
+    const response = axios
+      .post(transactionAPI, credentials, config)
+      .then((response) => {
+        console.log(response);
+        setTransactionHistory(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return response;
+  };
 
   useEffect(() => {
-    const fetchTransactionHistory = async () => {
-        const response = axios
-          .post(transactionAPI, credentials, config)
-          .then((response) => {
-            setTransactionHistory(response.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-    
-        return response;
-      };
-    const convertTransactionHistoryDateTime = () => {
-        let data = [];
-        for (var i in transactionHistory) {
-            let val = transactionHistory[i];
-            let unix_timestamp = val.datetime;
-            var date = new Date(unix_timestamp * 1000);
-            data.push({ ...val, datetime: date });
-        }
-    setTableInfo(data);
-    };
     fetchTransactionHistory();
-    convertTransactionHistoryDateTime();
-    }, []);
+  }, []);
 
   return (
     <>
+      <NavigationBar />
       <h1>Transaction History</h1>
       <Table striped bordered hover variant="dark">
         <thead>
@@ -74,17 +63,17 @@ function TransactionHistory() {
             <th>Amount</th>
             <th>e-Gift</th>
             <th>Expenses</th>
-            <th>Message</th>
+            <th>message</th>
             <th>Payee Id</th>
           </tr>
         </thead>
         <tbody>
-          {tableInfo.map((transactionHistory, index) => (
+          {transactionHistory.map((transactionHistory, index) => (
             <tr key={index}>
               <td>{transactionHistory.custID}</td>
               <td>{transactionHistory.datetime}</td>
               <td>
-                {transactionHistory.payeeID === credentials.custID
+                {transactionHistory.payeeID == credentials.custID
                   ? `+${transactionHistory.amount}`
                   : `-${transactionHistory.amount}`}
               </td>
