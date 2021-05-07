@@ -1,6 +1,6 @@
-import React from 'react'
-import axios from "axios"
-import { useState, useEffect } from "react"
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 /*
  * User must be able to view his/her own transaction history.
@@ -72,7 +72,12 @@ function TransactionHistory() {
                     {transactionHistory.map((transactionHistory, index) => (
                     <tr key={index}>
                     <td>{transactionHistory.custID}</td>
-                    <td>{transactionHistory.datetime}</td>
+                    <td>{()=>{
+                        var date = new Date(transactionHistory.timestamp*1000);
+                        var year = date.getFullYear();
+                        console.log(year)
+                        return year;
+                    }}</td>
                     <td>{(transactionHistory.payeeID == credentials.custID) ? `+${transactionHistory.amount}` : `-${transactionHistory.amount}`}</td>
                     <td>{JSON.stringify(transactionHistory.eGift)}</td>
                     <td>{transactionHistory.expenseCat}</td>
