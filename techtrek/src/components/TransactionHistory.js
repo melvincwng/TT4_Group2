@@ -76,7 +76,7 @@ function TransactionHistory() {
                         <th>Amount</th>
                         <th>e-Gift</th>
                         <th>Expenses</th>
-                        <th>message</th>
+                        <th>Message</th>
                         <th>Payee Id</th>
                     </tr>
                 </thead>
