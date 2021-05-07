@@ -1,44 +1,23 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+    <div>
+      <Router>
+        <NavigationBar />
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/" exact component={() => <div>Homepage</div>} />
+          <Route path="/login" exact component={() => <div>Login Page</div>} />
+          <Route path="/transfer" exact component={() => <div>Transfer</div>} />
+          <Route path="/history" exact component={() => <div>History</div>} />
+          <Route path="/balance" exact component={() => <div>Balance</div>} />
+          <Route path="/chat" exact component={() => <div>Chat</div>} />
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
