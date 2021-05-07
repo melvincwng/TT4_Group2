@@ -60,7 +60,7 @@ export default function Transfer() {
       <NavigationBar />
       <form onSubmit={submitTransaction}>
         <div class="mx-auto Form-centered" style={{ width: 50 + "%" }}>
-          <label class="sr-only" for="amount">
+          <label class="sr-only" for="amount" style={{ color: "white" }}>
             Amount
           </label>
           <div class="input-group mb-2 mr-sm-2">
@@ -76,7 +76,9 @@ export default function Transfer() {
           </div>
 
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name" style={{ color: "white" }}>
+              Name
+            </label>
             <input
               type="text"
               class="form-control"
@@ -86,7 +88,7 @@ export default function Transfer() {
           </div>
 
           <br />
-          <div class="form-check">
+          <div class="form-check" style={{ color: "white" }}>
             <input type="checkbox" class="form-check-input" id="egift" />
             <label class="form-check-label" for="exampleCheck1">
               E-Gift
