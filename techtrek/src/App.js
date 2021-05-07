@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
+import LoginPage from "./LoginPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
         <NavigationBar />
         <Switch>
           <Route path="/" exact component={() => <div>Homepage</div>} />
-          <Route path="/login" exact component={() => <div>Login Page</div>} />
+          <Route path="/login" exact component={() => <LoginPage />} />
           <Route path="/transfer" exact component={() => <div>Transfer</div>} />
           <Route path="/history" exact component={() => <div>History</div>} />
           <Route path="/balance" exact component={() => <div>Balance</div>} />
@@ -19,16 +20,4 @@ export default function App() {
       </Router>
     </div>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
