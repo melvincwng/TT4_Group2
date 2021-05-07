@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import TransactionHistory from "./components/TransactionHistory"
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   return (
