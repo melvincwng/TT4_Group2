@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./components/LoginPage";
 import TransactionHistory from "./components/TransactionHistory";
 import Balance from "./components/balance";
+import Transfer from "./components/transfer";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={() => <LoginPage />} />
-          <Route path="/transfer" exact component={() => <div>Transfer</div>} />
+          <Route path="/transfer" exact component={() => <Transfer />} />
           <Route
             path="/history"
             exact
