@@ -40,13 +40,19 @@ function TransactionHistory() {
             ).then((response) => {
                 console.log(response);
                 setTransactionHistory(response.data);
+                filterTransactionHistory(credentials.custID);
                 }
             ).catch((err) => {
                 console.log(err);
                 }
             );
+            
+        return response;
     }
 
+    const filterTransactionHistory = (customerId) => {
+        setTransactionHistory(transactionHistory.filter((transactionDetail) => transactionDetail.custID === customerId ))
+    }
     
     useEffect(() => {
         fetchTransactionHistory();
@@ -55,31 +61,31 @@ function TransactionHistory() {
     return (
         <>
             <h1>Transaction History</h1>
-            <Table striped bordered hover variant="dark">
-            <thead>
-                <tr>
-                <th>Customer Id</th>
-                <th>Date Time</th>
-                <th>Amount</th>
-                <th>e-Gift</th>
-                <th>Expenses</th>
-                <th>message</th>
-                <th>Payee Id</th>
-                </tr>
-            </thead>
-            <tbody>
-                {transactionHistory.map((transactionHistory) => (
-                <tr>
-                <td>{transactionHistory.custID}</td>
-                <td>{transactionHistory.datetime}</td>
-                <td>{transactionHistory.amount}</td>
-                <td>{JSON.stringify(transactionHistory.eGift)}</td>
-                <td>{transactionHistory.expenseCat}</td>
-                <td>{transactionHistory.message}</td>
-                <td>{transactionHistory.payeeID}</td>
-                </tr>
-                ))}
-            </tbody>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Customer Id</th>
+                        <th>Date Time</th>
+                        <th>Amount</th>
+                        <th>e-Gift</th>
+                        <th>Expenses</th>
+                        <th>message</th>
+                        <th>Payee Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {transactionHistory.map((transactionHistory) => (
+                    <tr key={transactionHistory.datetime}>
+                    <td>{transactionHistory.custID}</td>
+                    <td>{transactionHistory.datetime}</td>
+                    <td>{transactionHistory.amount}</td>
+                    <td>{JSON.stringify(transactionHistory.eGift)}</td>
+                    <td>{transactionHistory.expenseCat}</td>
+                    <td>{transactionHistory.message}</td>
+                    <td>{transactionHistory.payeeID}</td>
+                    </tr>
+                    ))}
+                </tbody>
             </Table>
         </>
     )
