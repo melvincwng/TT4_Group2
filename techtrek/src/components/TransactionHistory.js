@@ -51,6 +51,17 @@ function TransactionHistory() {
     fetchTransactionHistory();
   }, []);
 
+  function convertUnixToDate(timestamp) {
+    let unix_timestamp = timestamp;
+    let date = new Date(unix_timestamp * 1000);
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+    let formattedDateTime =
+      date + hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+    return formattedDateTime;
+  }
+
   return (
     <>
       <NavigationBar />
@@ -68,10 +79,11 @@ function TransactionHistory() {
           </tr>
         </thead>
         <tbody>
+          {console.log(transactionHistory.datetime)}
           {transactionHistory.map((transactionHistory, index) => (
             <tr key={index}>
               <td>{transactionHistory.custID}</td>
-              <td>{transactionHistory.datetime}</td>
+              <td>{convertUnixToDate(transactionHistory.datetime)}</td>
               <td>
                 {transactionHistory.payeeID == credentials.custID
                   ? `+${transactionHistory.amount}`
