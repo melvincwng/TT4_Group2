@@ -54,7 +54,7 @@ function TransactionHistory() {
   return (
     <>
       <NavigationBar />
-      <h1>Transaction History</h1>
+      <h1 style={{ color: "white" }}>Transaction History</h1>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
