@@ -1,6 +1,6 @@
 import React from "react";
 
 function Header() {
-  return <header> HI WELCOME TO OUR BANK</header>;
+  return <header>Welcome to our bank</header>;
 }
 export default Header;

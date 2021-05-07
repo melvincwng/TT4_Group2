@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -55,7 +56,11 @@ function LoginPage() {
 
   return (
     <div>
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+      <form
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+        className={styles.loginForm}
+      >
         <Header />
         <h1> Login Details</h1>
         <div>
@@ -74,12 +79,7 @@ function LoginPage() {
             className="form-control"
           ></input>
           <br />
-          <input
-            type="checkbox"
-            placeholder="Remember me"
-            className="form-control"
-          ></input>
-          <br />
+
           <button
             onClick={login}
             className="btn btn-primary"
