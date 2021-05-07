@@ -1,4 +1,5 @@
 import React from "react";
+import TransactionHistory from "./components/TransactionHistory"
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +11,7 @@ export default function App() {
   return (
     <Router>
       <div>
+      <TransactionHistory />
         <nav>
           <ul>
             <li>
