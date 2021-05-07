@@ -30,7 +30,7 @@ export default function Transfer() {
     const [transaction, setTransaction] = useState();
 
     const submitTransaction = () => {
-        const response = axios.post(
+        axios.post(
             transactionAPI,
             credentials,
             config
@@ -43,8 +43,6 @@ export default function Transfer() {
                 console.log(err);
                 }
             );
-            
-        return response;
     }
 
     // const filterTransaction = (customerId) => {
@@ -77,7 +75,7 @@ export default function Transfer() {
                     <label class="form-check-label" for="exampleCheck1">E-Gift</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" onClick={submitTransaction()}>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={submitTransaction()}>Submit</button>
             </div>
         </form>
     );
