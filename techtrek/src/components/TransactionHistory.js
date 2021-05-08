@@ -17,10 +17,12 @@ function TransactionHistory() {
   const transactionAPI =
     "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/view";
 
+  const responseObject = JSON.parse(localStorage.userData);
+
   // JSON Body containing the customer Id and account key
   const credentials = {
-    custID: 2,
-    accountKey: "4jzir16n-izjd-ytll-cjlp-u8i5ney8lkx",
+    custID: responseObject.custID,
+    accountKey: responseObject.accountKey,
   };
 
   // Config containing headers for the api key.

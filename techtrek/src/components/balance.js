@@ -9,9 +9,11 @@ function Balance() {
   const url =
     "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/accounts";
 
+  const responseObject = JSON.parse(localStorage.userData);
+
   const credentials = {
-    custID: 2,
-    accountKey: "4jzir16n-izjd-ytll-cjlp-u8i5ney8lkx",
+    custID: responseObject.custID,
+    accountKey: responseObject.accountKey,
   };
 
   const apikey = {
@@ -40,6 +42,7 @@ function Balance() {
 
   return (
     <div style={{ color: "white" }}>
+      {console.log(responseObject)}
       <NavigationBar />
       <h1>View Balance</h1>
       <Table striped bordered hover style={{ color: "white" }}>
