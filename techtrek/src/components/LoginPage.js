@@ -27,10 +27,16 @@ function LoginPage() {
     },
   };
 
+  // To store a value in localStorage, need to parse the value as a string first
+  // Following which, we can then convert the string into an object via JSON.parse()
+  // Essentially means that, in the other components, they need to JSON.parse(localStorage.userData)
+  // to get the response object and then extract out the data that they need.
   function storeUserSession(data) {
-    var dataToStore = JSON.stringify(data);
+    let dataToStore = JSON.stringify(data);
     localStorage.setItem("userData", dataToStore);
     console.log(localStorage.userData);
+    console.log(typeof localStorage.userData);
+    console.log("ToRetrieveObject: ", JSON.parse(localStorage.userData));
   }
 
   function handleSubmit(e) {
